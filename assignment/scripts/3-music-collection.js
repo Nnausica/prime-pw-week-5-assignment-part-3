@@ -31,7 +31,7 @@ let FooTracks = {
 // Add a function named `addToCollection`. 
 //This function creates new object with title, artist, year published
     // Add an array of tracks to your album objects. 
-    // Each track should have a name and duration. You will need to update the functions to support this new property:
+    // Each track should have a name and duration.
 function addToCollection( title, artist, yearPublished, track){
 
     let record = {title, artist, yearPublished, track};
@@ -65,15 +65,19 @@ console.log(collection);
 function showCollection( collection ){
 
     //Console.log the number of items in the array.
-    console.log( collection.length);
+    console.log( 'collection length is:', collection.length);
 
     // Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
     for (i=0; i<collection.length; i++){
         
         console.log(collection[i].title, 'by', collection[i].artist, 
-        'published in', collection[i].yearPublished)
+        'published in', collection[i].yearPublished, 'and contains tracks:')
 
-            //loop through the array and console.log track name:track length.
+        // Update the showCollection function to display the list of tracks for each album with its name and duration.
+        //     TITLE by ARTIST, published in YEAR:
+        //     1. NAME: DURATION
+        //     2. NAME: DURATION
+        //     3. NAME: DURATION
             for (j=0; j<collection[i].track.tracks.length; j++){
             console.log(collection[i].track.tracks[j], ':', collection[i].track.trackLength[j]) }; //end track loop
         };//end first for loop ARTIST/TITLE/YEAR
@@ -92,15 +96,15 @@ function findByArtist( search ){
     // Loop through the collection and add any objects with a matching artist to the array.
     for(i=0; i<collection.length; i++){
         if (search === collection[i].artist){
-            artistFound.push (collection[i]);
+            artistFound.push (collection[i])}
             //Return the array with the matching results. 
-        }
         // If no results are found, return an empty array.
     }//end for loop
     return artistFound;
 }//end findByArtist fuction
 
 console.log (findByArtist( "Taylor Swift"));
+console.log (findByArtist ('Metric'));
 
 
 
@@ -154,17 +158,8 @@ search()
 let trackArray = []
 
 
-// Each track should have a name and duration. 
 
-//You will need to update the functions to support this new property:
 
-// Update the addToCollection function to also take an input parameter for the array of tracks.
+
 // Update search to allow a trackName search criteria.
-// Update the showCollection function to display the list of tracks for each album with its name and duration.
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
-//     3. NAME: DURATION
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
+// 
