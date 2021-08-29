@@ -117,49 +117,58 @@ function search( searchThing ){
     let searchResults = [];
     //search artist
 
-    if(!searchThing){
-        console.log(`collection:`, collection)  //Not sure why this gets me collection x6?
-    }
-    else {
-    for (i=0; i<collection.length; i++){
-         // If there is no search object/empty search, return all albums in the collection.// 
-         if (searchThing === collection[i].artist){
-            searchResults.push (collection[i]);
-            //Return the array with the matching artist results. 
-        }
-        else if (searchThing === collection[i].title){
-            searchResults.push (collection[i]);
-            //Return the array with the matching title results. 
-        }
-        else if (searchThing === collection[i].yearPublished){
-            searchResults.push (collection[i]);
-            //Return the array with the matching year results. 
-        }
-        // If no results are found, return an empty array.
-        
-        
+    if (!searchThing){
+        console.log(`collection:`, collection)  //run first outside the loop so it doesn't get run 6 times
+        return collection
+    }//null entry result
 
-    };//end for loop
-    };
+    else{
+        for (i=0; i<collection.length; i++){
+
+            if (searchThing === collection[i].artist){
+                searchResults.push (collection[i]);
+                //Return the array with the matching artist results. 
+            }
+            else if (searchThing === collection[i].title){
+                searchResults.push (collection[i]);
+                //Return the array with the matching title results. 
+            }
+            else if (searchThing === collection[i].yearPublished){
+                searchResults.push (collection[i]);
+                //Return the array with the matching year results. 
+            }
+            else if ( searchThing === collection[i].track.tracks[i]){
+                searchResults.push (collection[i])
+            }
+            else{
+                for(j=0; j<collection[i].track.tracks.length; j++){
+                    if (searchThing === collection[i].track.tracks[j]){
+                        searchResults.push (collection[i])
+                        }//end track search
+
+                    else if (searchThing === collection[i].track.trackLength[j]){
+                        searchResults.push (collection[i])
+                        }// end duration search
+                    }//end second for loop
+                }
+
+        }//end for loop
+        } //end if/else statement
+
 
     // Create your solution based on a search object that has these properties:
     // { artist: 'Ray Charles', year: 1957 }
     console.log(searchResults);
-    
     return searchResults;
    
 };//end search function
 
-search('Modest Mouse')
-search('Taylor Swift')
-search()
+search('Modest Mouse');
+search('Taylor Swift');
+search('Walk it Back');
+search();
 
 // Add an array of tracks to your album objects. 
 let trackArray = []
 
-
-
-
-
 // Update search to allow a trackName search criteria.
-// 
